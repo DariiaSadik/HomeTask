@@ -47,6 +47,5 @@ public class Test02 {
     public static void main(String[] args){
         Test02 array = new Test02();
         array.array(7, 4, -5, 5);
-
     }
 }

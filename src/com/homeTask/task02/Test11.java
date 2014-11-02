@@ -60,3 +60,4 @@ public class Test11 {
                 + "; Heigth = " + propetry.getHeight() + "; Year = " + propetry.getYear());
     }
 }
+
