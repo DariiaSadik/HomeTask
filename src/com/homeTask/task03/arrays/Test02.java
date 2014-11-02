@@ -2,11 +2,9 @@ package com.homeTask.task03.arrays;
 
 public class Test02 {
     int[][] arr;
-
     int segment (int a, int b){
         return (int)(Math.random() * (b - a + 1)) + a; // Math.random()*11-5
     }
-
     void array (int begin, int end, int a, int b){
         int[][] array = new int[begin][end];
         for (int i = 0; i < begin; i++){
@@ -18,7 +16,6 @@ public class Test02 {
         max(arr);
         printAll(arr);
     }
-
     void max(int arr[][]){
         int sum = 1;
         int max = 0;
