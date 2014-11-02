@@ -36,7 +36,7 @@ public class Test02 {
     void printAll(int arr[][]){
         for (int[] arr1 : arr){
             for (int arr2 : arr1){
-                System.out.println(arr2 + " ");
+                System.out.print(arr2 + " ");
             }
             System.out.println();
         }

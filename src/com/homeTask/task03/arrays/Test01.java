@@ -9,7 +9,7 @@ public class Test01 {
         for (int i =0; i < 8; i++){
             for (int j = 0; j < 5; j++){
                 arr[i][j] = rand(10, 99);//(int)(Math.random() * 90) + 10;
-                System.out.println(arr[i][j] + " ");
+                System.out.print(arr[i][j] + " ");
             }
             System.out.println();
         }
