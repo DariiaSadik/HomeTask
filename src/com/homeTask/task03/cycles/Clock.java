@@ -1,67 +1,40 @@
 package com.homeTask.task03.cycles;
-// isMidnight
-// isMirrored -> str.charAt(i);
-public class Clock {
-    String minute = "00";
-    String  hours = "00";
-    int count = 0; // количество isMirrored()
 
-    // минуты ++
+public class Clock {
+    int minute = 0;
+    int  hours = 0;
+
     void tick() {
-        if (Integer.parseInt(minute) < 10) {
-            minute = (Integer.parseInt(minute) + 1) + "";
-            minute = Half(minute);
-        } else {
-            minute = (Integer.parseInt(minute) + 1) + "";
-        }
-        if (Integer.parseInt(minute) == 60){
-            minute = "00";
-            hours();
-        }
-        printAll();
-    }
-    // часы ++
-    void hours(){
-        if (Integer.parseInt(hours) < 10){
-            hours = (Integer.parseInt(hours) + 1) + "";
-            hours = Half(hours);
-        }
-        else {
-            hours = (Integer.parseInt(hours) + 1) + "";
-            isMidnight();
+        minute++;
+        if (minute == 60) {
+            minute = 0;
+            hours++;
         }
     }
-    // сутки
-    void isMidnight(){
-        if (Integer.parseInt(hours) == 24){
-            hours = "00";
-            minute = "00";
-        }
-    }
-    // минуты или часы
-    String Half (String str){
-        String firstHalf = "";
-        int index = 2 - (str.length());
-        for (int i = index; i > 0; i--){
-            firstHalf += "0";
-        }
-        return firstHalf + str;
+    boolean isMidnight(){
+        return hours == 24;
     }
     boolean isMirrored(){
-        return ((Integer.parseInt(hours) / 10 == Integer.parseInt(minute) % 10) &&
-                (Integer.parseInt(minute) / 10 == Integer.parseInt(hours) % 10));
+        return ((hours / 10 == minute % 10) && (minute / 10 == hours % 10));
     }
-    void printAll(){
-        if (isMirrored()) {
-            count++;
-            System.out.println(hours + ":" + minute + "  -  " + count);
+
+    String time(int value){
+        String time = "0";
+        if ((value + "").length() == 1){
+            return time + (value + "");
         }
+        return value + "";
+    }
+    void getTime(){
+        System.out.println(time(hours) + ":" + time(minute));
     }
     public static void main(String[] args){
-        System.out.println(" Time " + "  index");
         Clock clock = new Clock();
-        for (int i = 0; i < 2000; i++) {
+        do {
+            if (clock.isMirrored()){
+                clock.getTime();
+            }
             clock.tick();
-        }
+        } while (!clock.isMidnight());
     }
 }
