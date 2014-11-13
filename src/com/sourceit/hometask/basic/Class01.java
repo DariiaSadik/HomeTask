@@ -21,7 +21,9 @@ public class Class01 implements FractionNumber{
 
     @Override
     public void setDivisor(int divisor) {
-        this.divisor = divisor;
+        if (divisor != 0){
+            this.divisor = divisor;
+        }
     }
 
     @Override
@@ -34,24 +36,16 @@ public class Class01 implements FractionNumber{
         return (double) dividend/ (double) divisor;
     }
 
-    public String toString(){
-        return dividend + "/" + divisor;
+    @Override
+    public String toString() {
+        return "Class01{" +
+                "divisor=" + divisor +
+                ", dividend=" + dividend +
+                '}';
     }
+
     @Override
     public int compareTo(FractionNumber o) {
-        return (int)(o.doubleValue()); // !!!!!!!!!!!!
-    }
-    public static void main (String[] args){
-
-        Class01 a = new Class01();
-        Class01 b = new Class01();
-        a.setDividend(1);
-        a.setDivisor(2);
-
-        b.setDividend(1);
-        b.setDivisor(4);
-
-
-        System.out.println(a.doubleValue() + " " + b.doubleValue());
+        return Double.valueOf(this.doubleValue()).compareTo(Double.valueOf(o.doubleValue()));
     }
 }
