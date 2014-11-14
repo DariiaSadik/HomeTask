@@ -1,6 +1,6 @@
 package com.sourceit.hometask.basic;
 
-public class Class01 implements FractionNumber{
+public class FractionNumbers implements FractionNumber{
     private int divisor;
     private int dividend;
 
@@ -38,10 +38,7 @@ public class Class01 implements FractionNumber{
 
     @Override
     public String toString() {
-        return "Class01{" +
-                "divisor=" + divisor +
-                ", dividend=" + dividend +
-                '}';
+        return divisor + "/" + dividend;
     }
 
     @Override

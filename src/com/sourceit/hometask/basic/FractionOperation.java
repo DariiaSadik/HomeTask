@@ -1,6 +1,6 @@
 package com.sourceit.hometask.basic;
 
-public class Class02 implements FractionNumberOperation {
+public class FractionOperation implements FractionNumberOperation {
 
     @Override
     public FractionNumber add(FractionNumber fractionNumber, FractionNumber fractionNumber2) { // '+'
@@ -8,7 +8,7 @@ public class Class02 implements FractionNumberOperation {
             return null;
         }
         else {
-            Class01 resultFractionNumber = new Class01();
+            FractionNumbers resultFractionNumber = new FractionNumbers();
             if (fractionNumber.getDivisor() == fractionNumber2.getDivisor()) {
                 resultFractionNumber.setDividend(fractionNumber.getDividend() + fractionNumber2.getDividend());
                 resultFractionNumber.setDivisor(fractionNumber.getDivisor());
@@ -27,7 +27,7 @@ public class Class02 implements FractionNumberOperation {
             return null;
         }
         else {
-            Class01 resultFractionNumber = new Class01();
+            FractionNumbers resultFractionNumber = new FractionNumbers();
             if (fractionNumber.getDivisor() == fractionNumber2.getDivisor()) {
                 resultFractionNumber.setDividend(fractionNumber2.getDividend() - fractionNumber.getDividend());
                 resultFractionNumber.setDivisor(fractionNumber.getDivisor());
@@ -42,23 +42,24 @@ public class Class02 implements FractionNumberOperation {
 
     @Override
     public FractionNumber mul(FractionNumber fractionNumber, FractionNumber fractionNumber2) { // '*'
-        if ((fractionNumber == null) || (fractionNumber2 == null)){
-            return null;
-        }
-        Class01 resultFractionNumber = new Class01();
-        resultFractionNumber.setDivisor(fractionNumber.getDivisor() * fractionNumber2.getDivisor());
-        resultFractionNumber.setDividend(fractionNumber.getDividend() * fractionNumber2.getDividend());
-        return resultFractionNumber;
-    }
-
-    @Override
-    public FractionNumber div(FractionNumber fractionNumber, FractionNumber fractionNumber2) { // '/'
-        Class01 resultFractionNumber = new Class01();
+        FractionNumbers resultFractionNumber = new FractionNumbers();
         if ((fractionNumber.getDivisor() == 0) || (fractionNumber2.getDivisor() == 0)){
             return null;
         }
         else {
-//            ((fractionNumber.getDivisor() != 0) || (fractionNumber2.getDivisor() != 0))
+            resultFractionNumber.setDivisor(fractionNumber.getDivisor() * fractionNumber2.getDivisor());
+            resultFractionNumber.setDividend(fractionNumber.getDividend() * fractionNumber2.getDividend());
+            return resultFractionNumber;
+        }
+    }
+
+    @Override
+    public FractionNumber div(FractionNumber fractionNumber, FractionNumber fractionNumber2) { // '/'
+        FractionNumbers resultFractionNumber = new FractionNumbers();
+        if ((fractionNumber.getDivisor() == 0) || (fractionNumber2.getDivisor() == 0)){
+            return null;
+        }
+        else {
             resultFractionNumber.setDividend(fractionNumber2.getDivisor() * fractionNumber.getDividend());
             resultFractionNumber.setDivisor(fractionNumber2.getDividend() * fractionNumber.getDivisor());
             return resultFractionNumber;
@@ -67,10 +68,16 @@ public class Class02 implements FractionNumberOperation {
 
     @Override
     public FractionNumber parseFractionNumber(String s) {
-        String[] f = s.split("/");
-        Class01 parseFractionNumber = new Class01();
-        parseFractionNumber.setDividend(Integer.parseInt(f[0]));
-        parseFractionNumber.setDivisor(Integer.parseInt(f[1]));
+        FractionNumbers parseFractionNumber = new FractionNumbers();
+        if (s.indexOf("/") == 1) {
+            String[] f = s.split("/");
+            parseFractionNumber.setDividend(Integer.parseInt(f[0]));
+            parseFractionNumber.setDivisor(Integer.parseInt(f[1]));
+        }
+        else {
+            parseFractionNumber.setDividend(Integer.parseInt(s));
+            parseFractionNumber.setDivisor(Integer.parseInt(s));
+        }
         return parseFractionNumber;
     }
 }
