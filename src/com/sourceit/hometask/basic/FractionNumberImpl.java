@@ -1,6 +1,6 @@
 package com.sourceit.hometask.basic;
 
-public class FractionNumbers implements FractionNumber{
+public class FractionNumberImpl implements FractionNumber{
     private int divisor;
     private int dividend;
 

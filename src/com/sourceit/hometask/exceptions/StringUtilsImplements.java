@@ -1,3 +1,5 @@
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+
 package com.sourceit.hometask.exceptions;
 
 import java.util.ArrayList;
@@ -7,16 +9,18 @@ import java.util.regex.Pattern;
 public class StringUtilsImplements implements StringUtils{
     @Override
     public double div(String s, String s2) throws NullPointerException, NumberFormatException, ArithmeticException {
-        Pattern pattern = Pattern.compile("^[A-Za-z]$");
+        if ((s == null) && (s2 == null))
+            throw new NullPointerException();
+        Pattern pattern = Pattern.compile("^/[0-9]/$");
         Matcher matcher = pattern.matcher(s);
         Matcher matcher2 = pattern.matcher(s2);
-        if ((s == null) && (s2 == null)) throw new NullPointerException();
-        else {
-            if ((matcher.matches()) || (matcher2.matches())) throw new NumberFormatException();
-            else{
-                if (Double.parseDouble(s2) == 0) throw new ArithmeticException();
-                else return Double.parseDouble(s) / Double.parseDouble(s2);
-            }
+
+        if ((!matcher.matches()) || (!matcher2.matches()))
+            throw new NumberFormatException();
+        else{
+            if (Double.parseDouble(s2) == 0)
+                throw new ArithmeticException() ;
+            else return Double.parseDouble(s) / Double.parseDouble(s2);
         }
     }
 
@@ -42,21 +46,19 @@ public class StringUtilsImplements implements StringUtils{
 
     @Override
     public double[] findNumbers(String s) throws CustomException {
-        int i = 0;
         Pattern pattern = Pattern.compile("\\d*\\.\\d*");
         Matcher matcher = pattern.matcher(s);
         ArrayList<Double> arrayList = new ArrayList();
-        if(!matcher.find()) throw new CustomException("Not double value was found in the text");
-        else {
-            while (matcher.find()) {
-                arrayList.add(Double.parseDouble(matcher.group()));
-                i++;
-            }
-            double[] numbers = new double[arrayList.size()];
-            for(int j = 0; j < numbers.length; j++){
-                numbers[j] = arrayList.get(j);
-            }
-            return numbers;
+        //if(!matcher.find()) throw new CustomException("Not double value was found in the text");
+        while (matcher.find()) {
+            arrayList.add(Double.parseDouble(matcher.group()));
         }
+        double[] numbers = new double[arrayList.size()];
+        for(int j = 0; j < numbers.length; j++){
+            numbers[j] = arrayList.get(j);
+        }
+        if (numbers.length == 0) throw new CustomException("Not double value was found in the text");
+        return numbers;
     }
+
 }

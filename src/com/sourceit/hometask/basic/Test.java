@@ -4,10 +4,10 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        FractionNumbers[] mass = new FractionNumbers[10];
+        FractionNumberImpl[] mass = new FractionNumberImpl[10];
         Random r = new Random();
         for(int i = 0; i < 10; i++){
-            FractionNumbers class01 = new FractionNumbers();
+            FractionNumberImpl class01 = new FractionNumberImpl();
             class01.setDivisor(r.nextInt(20));
             class01.setDividend(r.nextInt(20));
             mass[i] = class01;
@@ -15,15 +15,15 @@ public class Test {
 
         System.out.println(Arrays.toString(mass));
         System.out.println("__________________________________");
-        FractionNumbers[] sortMass = new FractionNumbers[mass.length];
+        FractionNumberImpl[] sortMass = new FractionNumberImpl[mass.length];
         System.arraycopy(mass, 0, sortMass, 0, mass.length);
         Arrays.sort(sortMass);
         System.out.println(Arrays.toString(sortMass));
 
 
         FractionOperation test = new FractionOperation();
-        FractionNumbers a = new FractionNumbers();
-        FractionNumbers b = new FractionNumbers();
+        FractionNumberImpl a = new FractionNumberImpl();
+        FractionNumberImpl b = new FractionNumberImpl();
 
         a.setDividend(10);
         a.setDivisor(2);

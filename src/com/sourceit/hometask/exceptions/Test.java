@@ -19,7 +19,7 @@ public class Test {
         System.out.print("method div -> ");
         StringUtilsImplements div = new StringUtilsImplements();
         try{
-            System.out.println("2 / 3 = " + div.div("2", "3"));
+            System.out.println("2 / 3 = " + div.div("y", "f"));
         }catch (NullPointerException nullPExcep){
             System.out.println ("number 1 and number 2 are equal null!");
             nullPExcep.printStackTrace();
