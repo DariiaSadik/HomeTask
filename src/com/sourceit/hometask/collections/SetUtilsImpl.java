@@ -1,0 +1,42 @@
+package com.sourceit.hometask.collections;
+
+import com.sourceit.hometask.exceptions.StringUtilsImplements;
+
+import java.util.*;
+
+public class SetUtilsImpl implements SetUtils {
+
+    @Override
+    public SortedSet<String> orderedSet(Collection<Integer> integers, Set<String> strings) throws NullPointerException {
+        if(integers == null || strings == null) throw new NullPointerException();
+        Integer[] intArray = integers.toArray(new Integer[integers.size()]);
+        String[] strArray = strings.toArray(new String[strings.size()]);
+        for (int i = intArray.length; i >= 0; i--){
+            for (int j = 0; j < i; j++){
+                if(intArray[j] > intArray[j]){
+                    Integer tempInt = intArray[i];
+                    String tempStr = strArray[i];
+                    intArray[i] = intArray[j];
+                    strArray[i] = strArray[j];
+                    intArray[j] = tempInt;
+                    strArray[j] = tempStr;
+                }
+            }
+        }
+        SortedSet<String> sortedSet = new TreeSet<>();
+        for (int i = 0; i < strArray.length; i++){
+            sortedSet.add(strArray[i]);
+        }
+        return sortedSet;
+    }
+
+    @Override
+    public Set<Integer> customOrderSet(Integer... integers) throws NullPointerException {
+        if (integers.length == 0) throw new NullPointerException();
+        Set<Integer> customOrderSet = new HashSet<>();
+        for (int i = 0; i < integers.length; i++){
+            customOrderSet.add(integers[i]);
+        }
+        return customOrderSet;
+    }
+}
