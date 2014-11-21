@@ -9,15 +9,18 @@ public class SetUtilsImpl implements SetUtils {
         if(integers == null || strings == null) throw new NullPointerException();
         Integer[] intArray = integers.toArray(new Integer[integers.size()]);
         String[] strArray = strings.toArray(new String[strings.size()]);
-        for (int i = intArray.length; i >= 0; i--){
+        for (int i = intArray.length - 1; i >= 0; i--){
             for (int j = 0; j < i; j++){
-                if(intArray[j] > intArray[j]){
-                    Integer tempInt = intArray[i];
-                    String tempStr = strArray[i];
-                    intArray[i] = intArray[j];
-                    strArray[i] = strArray[j];
-                    intArray[j] = tempInt;
-                    strArray[j] = tempStr;
+                if(intArray[j] > intArray[j + 1]){
+//                    Integer tempInt = intArray[i];
+//                    String tempStr = strArray[i];
+//                    intArray[i] = intArray[j];
+//                    strArray[i] = strArray[j];
+//                    intArray[j] = tempInt;
+//                    strArray[j] = tempStr;
+                    String tempStr = strArray[intArray[i]];
+                    strArray[intArray[i]] = strArray[intArray[j]];
+                    strArray[intArray[j]] = tempStr;
                 }
             }
         }

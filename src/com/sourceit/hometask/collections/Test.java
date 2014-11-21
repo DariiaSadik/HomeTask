@@ -90,9 +90,9 @@ public class Test {
         str.add("Tuesday");
 
         Collection<Integer> intCollect = new ArrayList<>();
-        intCollect.add(new Integer(4));
+        intCollect.add(new Integer(2));
         intCollect.add(new Integer(1));
-        intCollect.add(new Integer(3));
+        intCollect.add(new Integer(0));
         System.out.println("output: ");
         System.out.println(setUtils.orderedSet(intCollect, str));
 
