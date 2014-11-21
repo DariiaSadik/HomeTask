@@ -2,7 +2,7 @@ package com.sourceit.hometask.basic;
 
 import java.util.*;
 
-public class Test {
+public class TestBasic {
     public static void main(String[] args) {
         FractionNumberImpl[] mass = new FractionNumberImpl[10];
         Random r = new Random();

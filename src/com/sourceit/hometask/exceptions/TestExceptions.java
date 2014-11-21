@@ -1,10 +1,8 @@
 package com.sourceit.hometask.exceptions;
 
 import java.util.Arrays;
-import java.util.*;
 
-
-public class Test {
+public class TestExceptions {
     public static void main(String[] args) {
         StringUtilsImplements findNumbers = new StringUtilsImplements();
         System.out.print("method findNumbers -> ");
