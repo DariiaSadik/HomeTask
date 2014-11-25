@@ -1,9 +1,6 @@
 package com.sourceit.hometask.collections;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
@@ -69,21 +66,6 @@ public class Test {
         System.out.println("\n --- Set ---");
         SetUtilsImpl setUtils = new SetUtilsImpl();
 
-//        Integer[] integers = new Integer[] {new Integer(4), new Integer(1), new Integer(3)};
-//        System.out.println(setUtils.customOrderSet(integers));
-//
-//        int[] result;
-//        List<Integer> list = new ArrayList<Integer>();
-//        list.add(1);
-//        list.add(2);
-//        list.add(3);
-//        Integer[] array = list.toArray(new Integer[list.size()]);
-//        result = new int[array.length];
-//        for (int i = 0; i < result.length; i++)
-//            result[i] = array[i];
-//        System.out.println(Arrays.toString(result));
-//
-
         Set<String> str = new HashSet<>();
         str.add("Sunday");
         str.add("Monday");
@@ -97,6 +79,18 @@ public class Test {
         System.out.println(setUtils.orderedSet(intCollect, str));
 
         // Map
+        System.out.println("\n --- Map ---");
+        Map<Integer, String> test = new HashMap<>();
+        test.put(1, "One");
+        test.put(2, "two");
+        test.put(3, "three");
 
+        System.out.println(test.keySet());
+        test.remove(2);
+        System.out.println(test.toString());
+        System.out.println(test.get(1));
+        System.out.println(test.isEmpty());
+        System.out.println(test.containsValue("One"));
+        System.out.println(test.values());
     }
 }
