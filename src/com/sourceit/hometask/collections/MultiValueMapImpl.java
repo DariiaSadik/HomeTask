@@ -46,7 +46,7 @@ public class MultiValueMapImpl<K, V> implements MultiValueMap{
     @Override
     public Iterator getIterator(Object key) {
         return null;
-    }
+    } // create Iterator and all method and return Iterator
 
     @Override
     public Object remove(Object key) {
@@ -79,5 +79,5 @@ public class MultiValueMapImpl<K, V> implements MultiValueMap{
     @Override
     public Set<Entry> entrySet() {
         return null;
-    }
+    } // input key and value
 }
