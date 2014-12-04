@@ -55,8 +55,9 @@ public class Test {
         // List
         System.out.println("\n --- List ---");
         ListUtilsImpl listUtils = new ListUtilsImpl();
-        String[] array = new String[]{"Sunday", "Monday", "Tuesday", "Wednesday",
-                "Thursday", "Friday", "Saturday"};
+        String[] array = new String[2];
+//        {"Sunday", "Monday", "Tuesday", "Wednesday",
+//                "Thursday", "Friday", "Saturday"};
         System.out.println("input: ");
         System.out.println(listUtils.asList(array));
         System.out.println("output: ");

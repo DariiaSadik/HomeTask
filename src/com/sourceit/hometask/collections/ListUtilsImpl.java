@@ -11,6 +11,7 @@ public class ListUtilsImpl implements ListUtils{
     public List<String> asList(String... strings) throws IllegalArgumentException {
         List<String> list = new ArrayList<>();
         for(int i = 0; i < strings.length; i++){
+            if(strings[i] == null) throw new IllegalArgumentException("Length is 0");
             list.add(strings[i]);
         }
         return list;
@@ -19,12 +20,7 @@ public class ListUtilsImpl implements ListUtils{
     @Override
     public <T extends Comparable<T>> List<T> sortedList(List<T> ts) throws IllegalArgumentException {
         List<T> list = new ArrayList<>();
-        Collections.sort(ts, new Comparator<T>() {
-            @Override
-            public int compare(T o1, T o2) {
-                return o1.compareTo(o2);
-            }
-        });
+        Collections.sort(ts);
         list.addAll(ts);
         return list;
     }

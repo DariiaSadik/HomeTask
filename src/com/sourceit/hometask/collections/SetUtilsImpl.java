@@ -30,8 +30,8 @@ public class SetUtilsImpl implements SetUtils {
 
     @Override
     public Set<Integer> customOrderSet(Integer... integers) throws NullPointerException {
-        if (integers.length == 0) throw new NullPointerException();
-        Set<Integer> customOrderSet = new HashSet<>();
+        if (integers.equals(null)) throw new NullPointerException();
+        Set<Integer> customOrderSet = new LinkedHashSet<>();
         for (int i = 0; i < integers.length; i++){
             customOrderSet.add(integers[i]);
         }
