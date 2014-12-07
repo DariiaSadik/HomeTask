@@ -1,9 +1,12 @@
 package com.sourceit.hometask.io;
 
-import java.io.*;
-import java.nio.channels.FileChannel;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-public class CopyFileStrategyChannel implements CopyFileStrategy{
+public class CopyFileStrategyPath implements CopyFileStrategy{
     @Override
     public void copyFile(String s, String s2) throws FileAlreadyPresentsException, FileCopyFailedException {
         copyFile(new File(s), new File(s2));
@@ -11,12 +14,13 @@ public class CopyFileStrategyChannel implements CopyFileStrategy{
 
     @Override
     public void copyFile(File file, File file2) throws FileAlreadyPresentsException, FileCopyFailedException {
-        try(FileChannel inChannel = new FileInputStream(file).getChannel();
-            FileChannel outChannel = new FileOutputStream(file2).getChannel()) {
+        Path input = Paths.get(String.valueOf(file));
+        Path output = Paths.get(String.valueOf(file2));
+        try{
             long startTime = System.nanoTime();
-            inChannel.transferTo(0, inChannel.size(), outChannel);
+            Files.copy(input, output);
             new CopyFileFactoryImpl().time(startTime);
-        } catch (IOException exc) {
+        } catch (IOException exc){
             exc.printStackTrace();
         }
     }
